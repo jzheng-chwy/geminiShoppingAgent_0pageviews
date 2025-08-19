@@ -1,6 +1,11 @@
+'use client';
+
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Home() {
+  const [videoLink, setVideoLink] = useState("");
+
   return (
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
@@ -26,8 +31,9 @@ export default function Home() {
           </li>
         </ol>
 
-        {/* 🔽 VIDEO SUBMISSION SECTION — your original request */}
+        {/* 🔽 VIDEO SUBMISSION SECTION */}
         <div className="w-full max-w-md mt-8 flex flex-col gap-4">
+          {/* Upload a video file */}
           <label className="font-semibold text-lg" htmlFor="videoUpload">
             Upload a video file:
           </label>
@@ -36,19 +42,41 @@ export default function Home() {
             type="file"
             accept="video/*"
             className="border p-2 rounded"
+            onChange={() => alert('Video file attached!')}
           />
+          <button
+            type="button"
+            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+            onClick={() => alert('Video file submitted!')}
+          >
+            Submit
+          </button>
 
           <hr className="my-4" />
 
-          <span className="font-semibold text-lg">Or watch this example video:</span>
-          <a
-            href="https://www.w3schools.com/html/mov_bbb.mp4"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 underline hover:text-blue-800"
-          >
-            Open example video
-          </a>
+          {/* Submit a video link */}
+          <label className="font-semibold text-lg" htmlFor="videoLink">
+            Submit a video link:
+          </label>
+          <div className="flex gap-2">
+            <input
+              id="videoLink"
+              type="url"
+              placeholder="https://example.com/video.mp4"
+              className="flex-1 border p-2 rounded"
+              onChange={(e) => setVideoLink(e.target.value)}
+            />
+            <button
+              type="button"
+              className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
+              onClick={() => {
+                if (videoLink) window.open(videoLink, '_blank');
+                else alert('Please enter a video link.');
+              }}
+            >
+              Submit
+            </button>
+          </div>
         </div>
         {/* 🔼 END VIDEO SECTION */}
 
