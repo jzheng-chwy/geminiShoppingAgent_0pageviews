@@ -6,6 +6,9 @@ import { useState } from "react";
 export default function Home() {
   const [videoLink, setVideoLink] = useState("");
 
+  // Your Stripe landing page URL
+  const stripeCheckoutUrl = "https://buy.stripe.com/test_4gwg1a7l0bxy5XGcMM";
+
   return (
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
@@ -42,12 +45,14 @@ export default function Home() {
             type="file"
             accept="video/*"
             className="border p-2 rounded"
-            onChange={() => alert('Video file attached!')}
           />
           <button
             type="button"
             className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
-            onClick={() => alert('Video file submitted!')}
+            onClick={() => {
+              // Redirect to Stripe checkout
+              window.location.href = stripeCheckoutUrl;
+            }}
           >
             Submit
           </button>
