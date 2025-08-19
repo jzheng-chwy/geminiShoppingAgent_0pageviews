@@ -12,6 +12,7 @@ export default function Home() {
           height={38}
           priority
         />
+
         <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
           <li className="mb-2 tracking-[-.01em]">
             Get started by editing{" "}
@@ -22,9 +23,34 @@ export default function Home() {
           </li>
           <li className="tracking-[-.01em]">
             Flexible Structure - Because yes you know what you want always.
-            
           </li>
         </ol>
+
+        {/* 🔽 VIDEO SUBMISSION SECTION — your original request */}
+        <div className="w-full max-w-md mt-8 flex flex-col gap-4">
+          <label className="font-semibold text-lg" htmlFor="videoUpload">
+            Upload a video file:
+          </label>
+          <input
+            id="videoUpload"
+            type="file"
+            accept="video/*"
+            className="border p-2 rounded"
+          />
+
+          <hr className="my-4" />
+
+          <span className="font-semibold text-lg">Or watch this example video:</span>
+          <a
+            href="https://www.w3schools.com/html/mov_bbb.mp4"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 underline hover:text-blue-800"
+          >
+            Open example video
+          </a>
+        </div>
+        {/* 🔼 END VIDEO SECTION */}
 
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           <a
@@ -52,6 +78,7 @@ export default function Home() {
           </a>
         </div>
       </main>
+
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
